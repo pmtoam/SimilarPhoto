@@ -15,13 +15,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // 输出apk名称为XXXX_v1.0_2016-01-15_wandoujia.apk
-                        def fileName = "XXXX_v${defaultConfig.versionName}_${getDate()}_${variant.productFlavors[0].name}.apk"
-                        // output.outputFile = new File(outputFile.parent, fileName)
+                        def fileName = "photo_${defaultConfig.versionName}_${getDate()}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File('/Users/stefanli/Desktop/Android/app/release', fileName)
                     }
                 }
@@ -31,32 +30,8 @@ android {
     }
 
     productFlavors {
-        //  默认
-        Stefanli {}
-        // google play
-        谷歌商店 {}
-        // 百度应用市场
-        百度应用市场 {}
-        // 360应用市场
-        _360应用市场 {}
-        // 应用宝
-        应用宝 {}
-        // 豌豆荚
-        豌豆荚 {}
-        // 小米商店
-        小米商店 {}
-        // 安卓市场
-        安卓市场 {}
-        // 91助手
-        _91助手 {}
-        // 安智市场
-        安智市场 {}
-        // 应用汇
-        应用汇 {}
-        // 机锋市场
-        机锋市场 {}
-        // 魅族商店
-        魅族商店 {}
+        yingyongbao{}
+        wandoujia{}
         productFlavors.all {
             flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
