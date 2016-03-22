@@ -1,18 +1,5 @@
 apply plugin: 'com.android.application'
 
-ext.appReleaseDir = ""
-
-def loadProperties() {
-    def proFile = file("../local.properties")
-    Properties p = new Properties()
-    proFile.withInputStream {
-        stream->p.load(stream)
-    }
-    appReleaseDir = p.appReleaseDir
-}
-
-loadProperties()
-
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
